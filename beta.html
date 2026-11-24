@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <link rel="icon" type="image/svg+xml" href="SKY Studio.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>申请内测资格 — SKYEditor · Distant SKY（远空） | SKY Studio</title>
+  <meta name="description" content="SKYEditor 内测申请：加入 Distant SKY（远空）内测，获取安装包与使用支持。">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sky: { light:'#E6EEFF', DEFAULT:'#84A9FF', dark:'#3B7BFF', darker:'#1E5BFF' }
+          },
+          fontFamily: { sans: ['Inter','system-ui','sans-serif'] },
+        },
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --header-h: 84px;
+      --page-bg: #F0F5FF;
+      --brand: #1E5BFF;
+      --brand-mid: #3B7BFF;
+      --brand-light: #84A9FF;
+    }
+
+    * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background-color: var(--page-bg);
+      color: #1F2937;
+      overflow-x: hidden;
+    }
+
+    .nav-item {
+      position: relative;
+      padding: .5rem 1rem;
+      color: #374151;
+      font-weight: 500;
+      transition: color .2s ease;
+    }
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      left: 1rem; right: 1rem; bottom: 0;
+      height: 2px;
+      background: var(--brand);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .nav-item:hover { color: var(--brand); }
+    .nav-item:hover::after { transform: scaleX(1); }
+
+    /* ================= 主区 ================= */
+    .apply-wrap {
+      min-height: 100vh;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--header-h) + 2.5rem) 1.25rem 3.5rem;
+    }
+    .apply-inner { width: 100%; max-width: 44rem; margin: 0 auto; text-align: center; }
+
+    .brand-mark {
+      margin: 0 0 clamp(.7rem, 1.8vh, 1.2rem);
+      padding-left: .18em;
+      font-size: clamp(.86rem, 1.7vw, 1.15rem);
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      line-height: 1.2;
+      color: #14305C;
+    }
+
+    .apply-title {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(180deg, #1E5BFF 0%, #2C63C8 55%, #3B7BFF 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .hero-hairline {
+      width: clamp(160px, 24vw, 380px);
+      height: 1px;
+      border: 0;
+      margin: clamp(1rem, 2.4vh, 1.6rem) auto clamp(1rem, 2.2vh, 1.5rem);
+      background: rgba(16, 32, 58, .12);
+    }
+
+    .apply-motto {
+      margin: 0 auto clamp(.7rem, 1.8vh, 1.1rem);
+      font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: #14305C;
+      line-height: 1.5;
+    }
+
+    .beta-line {
+      font-size: clamp(.78rem, 1.05vw, .9rem);
+      color: #64748B;
+      letter-spacing: .06em;
+      margin: 0 0 clamp(1.4rem, 3vh, 2.2rem);
+    }
+    .beta-line strong { color: var(--brand); font-weight: 700; }
+
+    /* ================= 申请卡 ================= */
+    .apply-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(30,91,255,.12);
+      border-radius: 18px;
+      padding: clamp(1.3rem, 3vh, 2rem) clamp(1.2rem, 3vw, 2rem);
+      box-shadow: 0 12px 40px rgba(30,91,255,.08);
+      text-align: left;
+    }
+    .card-title {
+      margin: 0 0 .5rem;
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      font-weight: 700;
+      color: #111827;
+    }
+    .card-desc {
+      margin: 0 0 clamp(.9rem, 2vh, 1.2rem);
+      font-size: clamp(.8rem, 1.05vw, .9rem);
+      color: #64748B;
+      line-height: 1.8;
+    }
+    .card-desc strong { color: #14305C; }
+
+    .steps { margin: 0 0 clamp(1rem, 2.2vh, 1.4rem); padding: 0; list-style: none; }
+    .steps li {
+      display: flex;
+      gap: .6rem;
+      font-size: clamp(.78rem, 1vw, .88rem);
+      color: #64748B;
+      line-height: 1.75;
+      padding: .3rem 0;
+    }
+    .steps li span.idx {
+      flex: none;
+      width: 1.35rem; height: 1.35rem;
+      margin-top: .18rem;
+      border-radius: 999px;
+      background: rgba(230,238,255,.9);
+      color: var(--brand);
+      font-size: .7rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* QQ 群展示位 */
+    .qq-box {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: .9rem;
+      padding: clamp(.85rem, 2vh, 1.1rem) clamp(.9rem, 2vw, 1.2rem);
+      border-radius: 14px;
+      background: #F0F5FF;
+      border: 1px dashed rgba(30,91,255,.28);
+    }
+    .qq-label {
+      margin: 0 0 .28rem;
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #64748B;
+      font-weight: 600;
+    }
+    .qq-number {
+      margin: 0;
+      font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+      font-weight: 800;
+      letter-spacing: .04em;
+      color: var(--brand);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .qq-number.pending { color: #94A3B8; font-weight: 700; }
+
+    .btn-glow { transition: all .3s ease; }
+    .btn-glow:hover { box-shadow: 0 8px 32px rgba(30,91,255,.35), 0 2px 8px rgba(30,91,255,.2); }
+
+    .btn-glow-outline { transition: all .3s ease; }
+    .btn-glow-outline:hover { box-shadow: 0 6px 24px rgba(30,91,255,.15), 0 1px 4px rgba(30,91,255,.1); }
+
+    /* 未开放的加群按钮 */
+    .btn-disabled,
+    .btn-disabled:hover {
+      background: #E2E8F3 !important;
+      color: #94A3B8 !important;
+      cursor: not-allowed;
+      box-shadow: none !important;
+      pointer-events: none;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      margin-top: clamp(1.2rem, 2.6vh, 1.8rem);
+      color: #64748B;
+      font-size: .86rem;
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+    .back-link:hover { color: var(--brand); }
+
+    /* ================= 页脚 ================= */
+    .footer-link { color: #9CA3AF; transition: color .2s ease; }
+    .footer-link:hover { color: #FFFFFF; }
+
+    @media (max-width: 900px), (max-height: 720px) {
+      :root { --header-h: 72px; }
+      .apply-wrap { padding: calc(var(--header-h) + 1.5rem) 1rem 2.5rem; }
+    }
+  </style>
+</head>
+
+<body class="font-sans">
+
+  <!-- ==================== 导航栏 ==================== -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+    <div class="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="SKY Studio.svg" alt="SKY Studio" class="w-12 h-12" onerror="this.style.display='none';this.insertAdjacentText('afterend','SKY')">
+        <span class="text-sm font-semibold tracking-widest text-gray-700 hidden sm:inline">SKYEDITOR</span>
+      </a>
+      <nav class="flex items-center">
+        <a href="index.html" class="nav-item">返回首页</a>
+        <a href="index.html#download" class="nav-item hidden sm:inline">下载</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="apply-wrap">
+      <div class="apply-inner">
+        <p class="brand-mark">SKY Studio</p>
+        <h1 class="apply-title">申请内测资格</h1>
+        <hr class="hero-hairline">
+        <p class="apply-motto">愿此行，终抵群星</p>
+        <p class="beta-line">Distant SKY（远空）· SKYEditor 内测申请</p>
+
+        <div class="apply-card">
+          <h2 class="card-title">关于 Distant SKY 内测</h2>
+          <p class="card-desc">
+            SKYEditor 目前处于 <strong>Distant SKY（远空）</strong> 内测阶段，基于 TurboWarp 打造，编译器加速、扩展库聚合与窗口化界面均在持续打磨中。
+            内测名额通过官方 QQ 群发放：<strong>入群后即可获取内测安装包、更新通知与问题反馈通道</strong>。
+          </p>
+
+          <ol class="steps">
+            <li><span class="idx">1</span><span>加入下方官方 QQ 内测群，备注「SKYEditor 内测」。</span></li>
+            <li><span class="idx">2</span><span>在群公告中下载当前内测版本（Web / Desktop）。</span></li>
+            <li><span class="idx">3</span><span>使用中遇到问题或建议，直接在群内反馈即可。</span></li>
+          </ol>
+
+          <!-- TODO: 填写 QQ 群号与加群链接 -->
+          <div class="qq-box">
+            <div>
+              <p class="qq-label">官方内测 QQ 群</p>
+              <!-- TODO: 将下方「待填写」替换为真实 QQ 群号 -->
+              <p class="qq-number pending">待填写</p>
+            </div>
+            <!-- TODO: 将 href="#" 替换为真实加群链接（如 https://qm.qq.com/q/xxxxx），并移除 disabled 样式与 aria-disabled -->
+            <a href="#" aria-disabled="true" tabindex="-1"
+               class="btn-glow btn-disabled inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm">
+              <i class="fa fa-qq"></i><span>加入 QQ 群</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="index.html" class="back-link">
+          <i class="fa fa-arrow-left"></i><span>返回官网首页</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== 页脚 ==================== -->
+  <footer class="bg-gray-900 text-gray-400">
+    <div class="mx-auto max-w-6xl px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+      <p class="m-0">愿此行，终抵群星 · &copy; 2026 SKY Studio. All rights reserved.</p>
+      <div class="flex items-center gap-5">
+        <a href="index.html" class="footer-link">官网首页</a>
+        <a href="https://sky-studio-io.github.io/" target="_blank" rel="noopener" class="footer-link">SKY Studio 主站</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
